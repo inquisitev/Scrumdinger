@@ -2,38 +2,30 @@
 //  Theme.swift
 //  ScrumDinger
 //
-//  Created by Trevor Keegan on 4/18/22.
+//  Created by Trevor Keegan on 4/19/22.
 //
 
 import Foundation
 import SwiftUI
 
-enum Theme: String{
-    case bubblegum
-    case buttercup
-    case indigo
-    case lavender
-    case magenta
-    case navy
-    case orange
-    case oxblood
-    case periwinkle
-    case poppy
-    case purple
-    case seafoam
-    case sky
-    case tan
-    case teal
-    case yellow
-    
-    var accentColor: Color {
-            switch self {
-            case .bubblegum, .buttercup, .lavender, .orange, .periwinkle, .poppy, .seafoam, .sky, .tan, .teal, .yellow: return .black
-            case .indigo, .magenta, .navy, .oxblood, .purple: return .white
-            }
-        }
-    
-    var mainColor: Color{
-        Color(rawValue)
+struct Theme{
+    let mainColor: Color
+    let accentColor: Color
+
+    static func generateRandomColor() -> Theme {
+        let themes: [Theme] = [
+            Theme(mainColor: .teal, accentColor: .black),
+            Theme(mainColor: .red, accentColor: .black),
+            Theme(mainColor: .green, accentColor: .black),
+            Theme(mainColor: .brown, accentColor: .black),
+            Theme(mainColor: .blue, accentColor: .black),
+            Theme(mainColor: .yellow, accentColor: .black),
+            Theme(mainColor: .orange, accentColor: .black),
+            Theme(mainColor: .pink, accentColor: .black),
+            Theme(mainColor: .purple, accentColor: .black),
+            
+        ]
+        return themes.randomElement()!
     }
+
 }
