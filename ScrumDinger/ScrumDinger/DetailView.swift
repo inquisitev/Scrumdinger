@@ -30,7 +30,28 @@ struct DetailView: View {
                         .background(scrum.theme.mainColor)
                         .cornerRadius(4)
                 }
+                .accessibilityElement(children: .combine)
             }
+            Section(header: Text("Attendees")) {
+                let attendees: [DailyScrum.Attendee] = scrum.attendees.map { DailyScrum.Attendee(name: $0)}
+                
+                
+                ForEach(attendees) { attendee in
+                    Label("\(attendee.name)", systemImage: "person")
+                }
+            }
+        }
+    }
+}
+
+extension DailyScrum {
+    struct Attendee: Identifiable{
+        let id: UUID
+        let name: String
+        
+        init(id: UUID = UUID(), name: String) {
+            self.id = id
+            self.name = name
         }
     }
 }
